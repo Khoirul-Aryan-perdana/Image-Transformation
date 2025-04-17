@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const ctx = canvas.getContext('2d');
     const processButton = document.getElementById('process');
     const operationSelect = document.getElementById('operation');
+    const downloadButton = document.getElementById('download');
     let originalImageData = null;
 
     // Load gambar dan tampilkan pada canvas
@@ -41,6 +42,14 @@ document.addEventListener('DOMContentLoaded', function () {
             default:
                 return;
         }
+    });
+
+    //fungsi download gambar
+    downloadButton.addEventListener('click', function () {
+        const link = document.createElement('a');
+        link.download = 'hasil-transformasi.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
     });
 
     // Fungsi transformasi geometris
